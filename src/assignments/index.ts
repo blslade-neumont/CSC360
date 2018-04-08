@@ -1,3 +1,5 @@
 
 
-export * from './decorator-pattern';
+import { main } from './decorator-pattern';
+
+export default main;

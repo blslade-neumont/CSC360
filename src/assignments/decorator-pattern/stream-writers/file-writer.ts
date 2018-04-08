@@ -4,12 +4,11 @@ import fs = require('fs');
 export class FileWriter extends StreamWriter {
     constructor(private path: string) {
         super();
-        this._writeStream = fs.createWriteStream(path);
     }
     
-    private _writeStream: fs.WriteStream | null = null;
+    private _isOpen = true;
     get isOpen() {
-        return !!this._writeStream;
+        return this._isOpen;
     }
     
     private writeBuffer = '';
@@ -19,13 +18,11 @@ export class FileWriter extends StreamWriter {
     }
     flush(): void {
         if (!this.isOpen) throw new Error(`This FileWriter has already been closed.`);
-        this._writeStream!.write(this.writeBuffer);
-        this.writeBuffer = '';
+        console.warn(`flush is not implemented for FileWriter. The entire file will be written when you close the StreamWriter.`);
     }
     close(): void {
         if (!this.isOpen) throw new Error(`This FileWriter has already been closed.`);
-        this.flush();
-        this._writeStream!.close();
-        this._writeStream = null;
+        fs.writeFileSync(this.path, new Buffer(this.writeBuffer, 'utf8'));
+        this._isOpen = false;
     }
 }
