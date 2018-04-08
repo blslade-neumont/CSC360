@@ -11,12 +11,11 @@ export function decoratorBasics() {
     let message = readFile(lightBrigadePath);
     
     encryptSignAndSaveFile(message, 'Alfred Tennyson', encryptedPath);
+    console.log(`Encrypted message saved to ${encryptedPath}`);
     
     let decrypted = readAndDecryptFile(encryptedPath);
-    
-    if (message !== decrypted) throw new Error(`Decrypted message did not equal the original`);
-    
     writeFile(decryptedPath, decrypted);
+    console.log(`Decrypted message saved to ${decryptedPath}`);
 }
 
 function readFile(path: string) {
@@ -43,6 +42,5 @@ function readAndDecryptFile(path: string) {
     reader = new CharShiftReader(reader);
     
     let decryptedMessage = reader.readToEnd();
-    console.log(`Decrypted:`, decryptedMessage);
     return decryptedMessage;
 }
