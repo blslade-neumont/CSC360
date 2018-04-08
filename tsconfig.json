@@ -26,8 +26,7 @@
     "exclude": [
         "node_modules",
         ".c9",
-        "dist",
-        "**/*.spec.ts"
+        "dist"
     ],
     "compileOnSave": false,
     "buildOnSave": false
