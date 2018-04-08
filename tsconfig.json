@@ -19,7 +19,8 @@
         "lib": [ "es6", "dom" ],
         "baseUrl": ".",
         "types": [
-            "core-js"
+            "core-js",
+            "node"
         ]
     },
     "exclude": [
