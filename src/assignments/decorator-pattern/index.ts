@@ -1,4 +1,5 @@
 import { decoratorBasics } from './basics';
+import { decoratorRealLife } from './real-life';
 
 //This is the entry point for the decorator pattern assignment
 
@@ -26,4 +27,5 @@ the message by shifting characters. Finally, write the encrypted message+signatu
 
 export function main() {
     decoratorBasics();
+    decoratorRealLife();
 }
